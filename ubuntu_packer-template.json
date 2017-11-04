@@ -1,0 +1,37 @@
+{
+    "variables": {
+        "aws_region": "{{env `AWS_REGION`}}",
+        "aws_ami_name": "ubuntu_{{isotime \"02Jan2006\"}}"
+    },
+
+    "builders": [{
+        "type": "amazon-ebs",
+        "region": "{{user `aws_region`}}",
+        "instance_type": "t2.micro",
+	"communicator": "ssh",
+        "ssh_username": "ubuntu",
+	"ssh_file_transfer_method": "scp",
+        "ami_name": "{{user `aws_ami_name`}}",
+        "ami_description": "Customized Ubuntu Linux",
+        "associate_public_ip_address": "true",
+        "source_ami_filter": {
+            "filters": {
+                "virtualization-type": "hvm",
+                "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+                "root-device-type": "ebs"
+            },
+            "owners": ["099720109477"],
+            "most_recent": true
+        }
+    }],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sudo apt-get -y update",
+                "sudo apt-get -y dist-upgrade"
+            ]
+        }
+    ]
+}

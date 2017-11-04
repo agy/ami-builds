@@ -4,7 +4,7 @@ version: 0.2
 env:
   variables:
     PACKER_VERSION: "1.1.1"
-    PACKER_TEMPLATE: "amazon-linux_packer-template.json"
+    PACKER_TEMPLATE: "ubuntu_packer-template.json"
 
 phases:
   pre_build:
