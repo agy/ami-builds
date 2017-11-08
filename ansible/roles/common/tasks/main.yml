@@ -37,14 +37,14 @@
     update_cache: yes
     upgrade: dist
 
-- name: disable unwanted services
-  systemd:
-    name: "{{ item }}"
-    enable: no
-    mask: yes
-  with_items:
-    - accounts-daemon
-    - iscsi
-    - iscsid
-    - lvm2-monitor
-    - lxcfs
+# - name: disable unwanted services
+#   systemd:
+#     name: "{{ item }}"
+#     enable: no
+#     mask: yes
+#   with_items:
+#     - accounts-daemon
+#     - iscsi
+#     - iscsid
+#     - lvm2-monitor
+#     - lxcfs
