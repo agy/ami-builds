@@ -39,7 +39,7 @@
 
 - name: disable unwanted services
   systemd:
-    name: {{ item }}
+    name: "{{ item }}"
     enabled: no
   with_items:
     - accounts-daemon
