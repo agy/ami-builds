@@ -3,14 +3,11 @@ version: 0.2
 
 env:
   variables:
-    PACKER_VERSION: "1.1.1"
     PACKER_TEMPLATE: "ubuntu_packer-template.json"
 
 phases:
   pre_build:
     commands:
-      - echo "Installing HashiCorp Packer..."
-      - curl -qL -o packer.zip https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip && unzip packer.zip
       - echo "Validating ${PACKER_TEMPLATE}"
       - ./packer validate ${PACKER_TEMPLATE}
   build:
