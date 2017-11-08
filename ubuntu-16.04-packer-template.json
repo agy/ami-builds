@@ -27,6 +27,10 @@
 
     "provisioners": [
 	{
+	    "type": "shell",
+	    "user": "setup.sh"
+	},
+	{
 	    "type": "ansible",
 	    "user": "root",
 	    "playbook_file": "ansible/base-ami.yml"
