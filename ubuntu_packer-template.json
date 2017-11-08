@@ -27,13 +27,10 @@
     }],
 
     "provisioners": [
-        {
-            "type": "shell",
-            "inline": [
-                "sudo apt-get -y update",
-                "sudo apt-get -y dist-upgrade"
-            ]
-        }
+	{
+	    "type": "ansible",
+	    "playbook_file": "ansible/base-ami.yml"
+	}
     ],
 
     "post-processors": [
