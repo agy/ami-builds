@@ -8,6 +8,8 @@ env:
 phases:
   pre_build:
     commands:
+      - env
+      - id
       - echo "Validating ${PACKER_TEMPLATE}"
       - packer validate ${PACKER_TEMPLATE}
   build:
