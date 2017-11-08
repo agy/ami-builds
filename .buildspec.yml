@@ -14,7 +14,7 @@ phases:
     commands:
       - aws configure set region ${AWS_REGION}
       - echo "Building HashiCorp Packer template ${PACKER_TEMPLATE}"
-      - packer build -color=false -var git_sha=${CODEBUILD_RESOLVED_SOURCE_VERSION} ${PACKER_TEMPLATE}
+      - packer build -color=false -var git_sha=${CODEBUILD_SOURCE_VERSION} ${PACKER_TEMPLATE}
   post_build:
     commands:
       - echo "HashiCorp Packer build completed on `date`"
