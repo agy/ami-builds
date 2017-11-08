@@ -1,0 +1,2 @@
+# Do not install additional language packs
+Acquire::Languages "none";
