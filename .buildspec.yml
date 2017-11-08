@@ -8,8 +8,7 @@ env:
 phases:
   pre_build:
     commands:
-      - env
-      - id
+      - ansible --version
       - echo "Validating ${PACKER_TEMPLATE}"
       - packer validate ${PACKER_TEMPLATE}
   build:
