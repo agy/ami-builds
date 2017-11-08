@@ -1,13 +1,15 @@
 ---
 
 - name: ensure recommends are never installed
+  become: true
+  become_user: root
+  become_method: sudo
   copy:
     src: 99recommends
     dest: /etc/apt/apt.conf.d/99recommends
     owner: root
     group: root
     mode: 0644
-  become: true
 
 - name: ensure apt cleans up after itself
   copy:
