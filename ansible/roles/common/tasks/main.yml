@@ -7,7 +7,7 @@
   command: ls -al /etc/apt/apt.conf.d/
 
 - name: test copy
-  command: cp /etc/passwd /etc/apt/apt.conf.d/passwd
+  command: sudo cp /etc/passwd /etc/apt/apt.conf.d/passwd
   become: true
 
 - name: ensure recommends are never installed
