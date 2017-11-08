@@ -1,5 +1,14 @@
 ---
 
+- name: where am i
+  command: hostname
+
+- name: who am i
+  command: id
+
+- name: ip address
+  command: ip a sh
+
 - name: ensure recommends are never installed
   copy:
     src: 99recommends
