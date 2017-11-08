@@ -1,5 +1,3 @@
-- hosts: default
-  become: true
-
+- hosts: ami
   roles:
     - common
