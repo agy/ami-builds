@@ -1,15 +1,5 @@
 ---
 
-- name: test dir
-  command: ls -ald /etc/apt/apt.conf.d
-
-- name: test dir contents
-  command: ls -al /etc/apt/apt.conf.d/
-
-- name: test copy
-  command: sudo cp /etc/passwd /etc/apt/apt.conf.d/passwd
-  become: true
-
 - name: ensure recommends are never installed
   copy:
     src: 99recommends
@@ -17,9 +7,6 @@
     owner: root
     group: root
     mode: 0644
-  become: true
-  become_user: root
-  become_method: sudo
 
 - name: ensure apt cleans up after itself
   copy:
