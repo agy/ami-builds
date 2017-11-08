@@ -33,7 +33,7 @@
 	{
 	    "type": "ansible",
 	    "user": "root",
-	    "extra_arguments": [ "--sudo", "-vvvv" ],
+	    "extra_arguments": [ "--become", "-vvvv" ],
 	    "playbook_file": "ansible/base-ami.yml"
 	}
     ],
