@@ -28,7 +28,7 @@
     "provisioners": [
 	{
 	    "type": "shell",
-	    "user": "setup.sh"
+	    "script": "setup.sh"
 	},
 	{
 	    "type": "ansible",
