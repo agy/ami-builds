@@ -1,7 +1,8 @@
 {
     "variables": {
         "aws_region": "{{env `AWS_REGION`}}",
-        "aws_ami_name": "ubuntu-{{timestamp}}"
+        "aws_ami_name": "ubuntu-{{timestamp}}",
+	"git_sha": ""
     },
 
     "builders": [{
@@ -11,7 +12,7 @@
 	"communicator": "ssh",
         "ssh_username": "ubuntu",
 	"ssh_file_transfer_method": "scp",
-        "ami_name": "{{user `aws_ami_name`}}",
+        "ami_name": "{{user `aws_ami_name`}}-{{user `git_sha`}}",
         "ami_description": "Customized Ubuntu Linux",
         "associate_public_ip_address": "true",
         "source_ami_filter": {
