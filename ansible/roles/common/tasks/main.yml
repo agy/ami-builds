@@ -38,13 +38,10 @@
     upgrade: dist
 
 - name: disable unwanted services
-  systemd:
-    name: "{{ item }}"
-    enabled: no
+  command: "systemctl disable {{ item }}"
   with_items:
     - accounts-daemon
     - iscsi
     - iscsid
     - lvm2-monitor
     - lxcfs
-  become: yes
