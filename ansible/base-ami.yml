@@ -1,4 +1,4 @@
 - hosts: default
-  become: true
+  sudo: true
   roles:
     - common
