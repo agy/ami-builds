@@ -41,6 +41,8 @@
   systemd:
     name: "{{ item }}"
     enabled: no
+    masked: yes
+    state: stopped
   with_items:
     - accounts-daemon
     - iscsi
