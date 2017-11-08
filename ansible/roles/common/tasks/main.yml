@@ -7,6 +7,7 @@
     owner: root
     group: root
     mode: 0644
+  become: yes
 
 - name: ensure apt cleans up after itself
   copy:
@@ -15,6 +16,7 @@
     owner: root
     group: root
     mode: 0644
+  become: yes
 
 - name: do not install different languages
   copy:
@@ -23,6 +25,7 @@
     owner: root
     group: root
     mode: 0644
+  become: yes
 
 - name: do not start daemons after install
   copy:
@@ -31,17 +34,23 @@
     owner: root
     group: root
     mode: 0755
+  become: yes
 
 - name: apt update and dist-upgrade
   apt:
     update_cache: yes
     upgrade: dist
+  become: yes
 
 - name: disable unwanted services
-  command: "systemctl disable {{ item }}"
+  systemd:
+    name: "{{ item }}"
+    enable: no
+    mask: yes
   with_items:
     - accounts-daemon
     - iscsi
     - iscsid
     - lvm2-monitor
     - lxcfs
+  become: yes
