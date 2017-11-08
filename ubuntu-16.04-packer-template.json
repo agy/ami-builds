@@ -33,6 +33,7 @@
 	{
 	    "type": "ansible",
 	    "user": "root",
+	    "extra_arguments": [ "-vvvv" ],
 	    "playbook_file": "ansible/base-ami.yml"
 	}
     ],
