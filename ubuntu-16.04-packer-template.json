@@ -1,48 +1,48 @@
 {
-    "variables": {
-        "aws_region": "{{env `AWS_REGION`}}",
-        "aws_ami_name": "ubuntu-{{timestamp}}",
-        "ssh_username": "ubuntu"
-    },
-
-    "builders": [{
-        "type": "amazon-ebs",
-        "region": "{{user `aws_region`}}",
-        "instance_type": "t2.micro",
-	"communicator": "ssh",
-        "ssh_username": "{{user `ssh_username`}}",
-	"ssh_file_transfer_method": "scp",
-        "ami_name": "{{user `aws_ami_name`}}",
-        "ami_description": "Customized Ubuntu Linux",
-        "associate_public_ip_address": "true",
-        "source_ami_filter": {
-            "filters": {
-                "virtualization-type": "hvm",
-                "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
-                "root-device-type": "ebs"
-            },
-            "owners": ["099720109477"],
-            "most_recent": true
-        }
-    }],
-
-    "provisioners": [
-	{
-	    "type": "shell",
-	    "script": "setup.sh"
+	"variables": {
+		"aws_region": "{{env `AWS_REGION`}}",
+		"aws_ami_name": "ubuntu-{{timestamp}}",
+		"ssh_username": "ubuntu"
 	},
-	{
-	    "type": "ansible",
-            "user": "{{user `ssh_username`}}",
-	    "playbook_file": "ansible/base-ami.yml"
-	}
-    ],
 
-    "post-processors": [
-        {
-            "type": "manifest",
-            "output": "manifest.json",
-            "strip_path": true
-        }
-    ]
+	"builders": [{
+		"type": "amazon-ebs",
+		"region": "{{user `aws_region`}}",
+		"instance_type": "t2.micro",
+		"communicator": "ssh",
+		"ssh_username": "{{user `ssh_username`}}",
+		"ssh_file_transfer_method": "scp",
+		"ami_name": "{{user `aws_ami_name`}}",
+		"ami_description": "Customized Ubuntu Linux",
+		"associate_public_ip_address": "true",
+		"source_ami_filter": {
+			"filters": {
+				"virtualization-type": "hvm",
+				"name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+				"root-device-type": "ebs"
+			},
+			"owners": ["099720109477"],
+			"most_recent": true
+		}
+	}],
+
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "setup.sh"
+		},
+		{
+			"type": "ansible",
+			"user": "{{user `ssh_username`}}",
+			"playbook_file": "ansible/base-ami.yml"
+		}
+	],
+
+	"post-processors": [
+		{
+			"type": "manifest",
+			"output": "manifest.json",
+			"strip_path": true
+		}
+	]
 }
