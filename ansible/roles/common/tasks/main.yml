@@ -7,6 +7,7 @@
     owner: root
     group: root
     mode: 0644
+  become: true
 
 - name: ensure apt cleans up after itself
   copy:
@@ -15,6 +16,7 @@
     owner: root
     group: root
     mode: 0644
+  become: true
 
 - name: do not install different languages
   copy:
@@ -23,6 +25,7 @@
     owner: root
     group: root
     mode: 0644
+  become: true
 
 - name: do not start daemons after install
   copy:
@@ -31,11 +34,13 @@
     owner: root
     group: root
     mode: 0755
+  become: true
 
 - name: apt update and dist-upgrade
   apt:
     update_cache: yes
     upgrade: dist
+  become: true
 
 # - name: disable unwanted services
 #   systemd:
