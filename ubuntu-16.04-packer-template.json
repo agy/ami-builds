@@ -1,7 +1,8 @@
 {
     "variables": {
         "aws_region": "{{env `AWS_REGION`}}",
-        "aws_ami_name": "ubuntu-{{timestamp}}"
+        "aws_ami_name": "ubuntu-{{timestamp}}",
+        "ssh_username": "ubuntu"
     },
 
     "builders": [{
@@ -9,7 +10,7 @@
         "region": "{{user `aws_region`}}",
         "instance_type": "t2.micro",
 	"communicator": "ssh",
-        "ssh_username": "ubuntu",
+        "ssh_username": "{{user `ssh_username`}}",
 	"ssh_file_transfer_method": "scp",
         "ami_name": "{{user `aws_ami_name`}}",
         "ami_description": "Customized Ubuntu Linux",
@@ -32,7 +33,7 @@
 	},
 	{
 	    "type": "ansible",
-	    "user": "root",
+            "user": "{{user `ssh_username`}}",
 	    "extra_arguments": [ "-vvvv" ],
 	    "playbook_file": "ansible/base-ami.yml"
 	}
