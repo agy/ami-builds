@@ -29,19 +29,19 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"script": "../setup.sh"
+			"script": "setup.sh"
 		},
 		{
 			"type": "ansible",
 			"user": "{{user `ssh_username`}}",
-			"playbook_file": "../ansible/base-ami.yml"
+			"playbook_file": "ansible/base-ami.yml"
 		}
 	],
 
 	"post-processors": [
 		{
 			"type": "manifest",
-			"output": "manifest.json",
+			"output": "/tmp/manifest.json",
 			"strip_path": true
 		}
 	]

@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    PACKER_TEMPLATE: "ubuntu-16.04-packer-template.json"
+    PACKER_TEMPLATE: "base-ami/ubuntu-16.04-packer-template.json"
 
 phases:
   pre_build:
