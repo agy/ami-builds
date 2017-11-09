@@ -8,7 +8,6 @@ env:
 phases:
   pre_build:
     commands:
-      - hostname
       - echo "Validating ${PACKER_TEMPLATE}"
       - packer validate ${PACKER_TEMPLATE}
   build:
