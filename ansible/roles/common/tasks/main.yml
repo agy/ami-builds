@@ -42,14 +42,16 @@
     upgrade: dist
   become: true
 
-# - name: disable unwanted services
-#   systemd:
-#     name: "{{ item }}"
-#     enable: no
-#     mask: yes
-#   with_items:
-#     - accounts-daemon
-#     - iscsi
-#     - iscsid
-#     - lvm2-monitor
-#     - lxcfs
+- name: disable unwanted services
+  systemd:
+    name: "{{ item }}"
+    enable: no
+  with_items:
+    - accounts-daemon
+    - iscsi
+    - iscsid
+    - lvm2-lvmetad
+    - lvm2-monitor
+    - lxcfs
+    - snapd
+  become: true
