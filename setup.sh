@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# This script installs the bare minimum to get Ansible remote running
+# on an instance.
+#
+# Do NOT add anything else here.
+#
 
 set -e
 set -u
