@@ -34,7 +34,6 @@
 	{
 	    "type": "ansible",
             "user": "{{user `ssh_username`}}",
-	    "extra_arguments": [ "-vvvv" ],
 	    "playbook_file": "ansible/base-ami.yml"
 	}
     ],
