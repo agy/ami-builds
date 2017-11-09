@@ -45,7 +45,7 @@
 - name: disable unwanted services
   systemd:
     name: "{{ item }}"
-    enable: no
+    enabled: no
   with_items:
     - accounts-daemon
     - iscsi
