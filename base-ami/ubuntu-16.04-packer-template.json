@@ -1,7 +1,7 @@
 {
 	"variables": {
 		"aws_region": "{{env `AWS_REGION`}}",
-		"aws_ami_name": "ubuntu-{{timestamp}}",
+		"aws_ami_name": "base-ami-{{timestamp}}",
 		"ssh_username": "ubuntu"
 	},
 
@@ -13,7 +13,7 @@
 		"ssh_username": "{{user `ssh_username`}}",
 		"ssh_file_transfer_method": "scp",
 		"ami_name": "{{user `aws_ami_name`}}",
-		"ami_description": "Customized Ubuntu Linux",
+		"ami_description": "Base AMI",
 		"associate_public_ip_address": "true",
 		"source_ami_filter": {
 			"filters": {
@@ -29,12 +29,12 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"script": "setup.sh"
+			"script": "../setup.sh"
 		},
 		{
 			"type": "ansible",
 			"user": "{{user `ssh_username`}}",
-			"playbook_file": "ansible/base-ami.yml"
+			"playbook_file": "../ansible/base-ami.yml"
 		}
 	],
 
