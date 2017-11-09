@@ -9,12 +9,13 @@ ENV PACKER_SHA256 e407566e2063ac697e0bbf6f2dd334be448d58bed93f44a186408bf1fc54c5
 # Install dependencies
 RUN apt-get update && \
     apt-get --yes install --no-install-recommends \
-	awscli \
-	ansible \
-	curl \
-	git \
+        awscli \
+        ansible \
+        curl \
+        git \
+        openssh-client \
         software-properties-common \
-	unzip
+        unzip
 
 # Install ansible from PPA (required for systemd management support)
 # RUN add-apt-repository ppa:ansible/ansible-${ANSIBLE_VERSION} && \
