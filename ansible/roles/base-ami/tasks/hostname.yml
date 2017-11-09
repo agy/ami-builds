@@ -1,0 +1,17 @@
+---
+
+- name: install systemd service to set the hostname
+  copy:
+    src: dd-hostname.service
+    dest: /etc/systemd/system/dd-hostname.service
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+
+- name: enable dd-hostname service
+  systemd:
+    name: dd-hostname
+    enabled: yes
+    masked: no
+    daemon_reload: yes

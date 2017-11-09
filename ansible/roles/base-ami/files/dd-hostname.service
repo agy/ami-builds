@@ -1,0 +1,16 @@
+[Unit]
+Description=Set the hostname and /etc/hostname file
+Wants=network-online.target cloud-config.target
+After=network-online.target cloud-config.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "/usr/bin/hostnamectl set-hostname $(cat /run/cloud-init/.instance-id)"
+ExecStart=/bin/sh -c "echo 127.0.0.1 $(cat /run/cloud-init/.instance-id) localhost > /etc/hosts"
+RemainAfterExit=yes
+TimeoutSec=0
+StandardOutput=journal+console
+SyslogIdentifier=dd-hostname
+
+[Install]
+WantedBy=cloud-init.target
