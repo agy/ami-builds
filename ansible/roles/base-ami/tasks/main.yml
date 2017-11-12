@@ -1,47 +1,5 @@
 ---
 
-- name: ensure recommends are never installed
-  copy:
-    src: 99recommends
-    dest: /etc/apt/apt.conf.d/99recommends
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-
-- name: ensure apt cleans up after itself
-  copy:
-    src: 99clean
-    dest: /etc/apt/apt.conf.d/99clean
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-
-- name: do not install different languages
-  copy:
-    src: 99languages
-    dest: /etc/apt/apt.conf.d/99languages
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-
-- name: do not start daemons after install
-  copy:
-    src: policy-rc.d
-    dest: /usr/sbin/policy-rc.d
-    owner: root
-    group: root
-    mode: 0755
-  become: true
-
-- name: apt update and dist-upgrade
-  apt:
-    update_cache: yes
-    upgrade: dist
-  become: true
-
 - name: disable unwanted services
   systemd:
     name: "{{ item }}"
@@ -56,6 +14,7 @@
     - snapd
   become: true
 
+- include: apt.yml
 - include: kernel.yml
 - include: hostname.yml
 - include: docker.yml
