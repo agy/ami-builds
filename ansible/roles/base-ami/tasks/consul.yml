@@ -5,3 +5,4 @@
 
 - name: install consul
   command: dpkg --install /tmp/consul_1.0.0~dd_amd64.deb
+  become: true
