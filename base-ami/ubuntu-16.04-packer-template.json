@@ -2,6 +2,7 @@
 	"variables": {
 		"aws_region": "{{env `AWS_REGION`}}",
 		"aws_ami_name": "base-ami-{{timestamp}}",
+		"iam_instance_profile": "machine",
 		"ssh_username": "ubuntu"
 	},
 
@@ -14,6 +15,7 @@
 		"ssh_file_transfer_method": "scp",
 		"ami_name": "{{user `aws_ami_name`}}",
 		"ami_description": "Base AMI",
+		"iam_instance_profile": "{{user `iam_instance_profile`}}",
 		"associate_public_ip_address": "true",
 		"source_ami_filter": {
 			"filters": {
