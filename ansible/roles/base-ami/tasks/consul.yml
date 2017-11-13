@@ -1,0 +1,7 @@
+---
+
+- name: copy deb from s3
+  command: aws s3 cp s3://agy-deb/consul_1.0.0~dd_amd64.deb /tmp/consul_1.0.0~dd_amd64.deb
+
+- name: install consul
+  command: dpkg --install /tmp/consul_1.0.0~dd_amd64.deb

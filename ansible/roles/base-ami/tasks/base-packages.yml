@@ -1,0 +1,7 @@
+---
+
+- name: install base packages
+  apt:
+    name: {{ item }}
+  with_items:
+    - awscli

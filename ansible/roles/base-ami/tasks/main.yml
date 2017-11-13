@@ -15,6 +15,8 @@
   become: true
 
 - include: apt.yml
+- include: base-packages.yml
 - include: kernel.yml
 - include: hostname.yml
 - include: docker.yml
+- include: consul.yml
