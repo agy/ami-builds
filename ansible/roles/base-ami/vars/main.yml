@@ -1,3 +1,4 @@
 ---
 
 consul_package: "consul_1.0.0~dd0_amd64.deb"
+go_audit_package: "go-audit_5054f06785~dd0_amd64.deb"
