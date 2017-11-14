@@ -1,17 +1,8 @@
 ---
 
 - name: copy deb from s3
-  command: aws s3 cp s3://agy-deb/consul_1.0.0~dd_amd64.deb /tmp/consul_1.0.0~dd_amd64.deb
+  command: "aws s3 cp s3://agy-deb/{{ consul_package }} /tmp/{{ consul_package }}"
 
 - name: install consul
-  command: dpkg --install /tmp/consul_1.0.0~dd_amd64.deb
-  become: true
-
-- name: create default consul config
-  copy:
-    src: consul-default.json
-    dest: /etc/consul.d/default.json
-    owner: root
-    group: root
-    mode: 0644
+  command: "dpkg --install /tmp/{{ consul_package }}"
   become: true
