@@ -1,6 +1,6 @@
 ---
 
-- name: copy deb from s3
+- name: copy consul deb from s3
   command: "aws s3 cp s3://agy-deb/{{ consul_package }} /tmp/{{ consul_package }}"
 
 - name: install consul

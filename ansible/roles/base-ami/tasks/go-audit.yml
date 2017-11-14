@@ -1,6 +1,6 @@
 ---
 
-- name: copy deb from s3
+- name: copy go-audit deb from s3
   command: "aws s3 cp s3://agy-deb/{{ go_audit_package }} /tmp/{{ go_audit_package }}"
 
 - name: install go-audit
