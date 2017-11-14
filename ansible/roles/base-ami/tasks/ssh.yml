@@ -1,0 +1,33 @@
+---
+
+# - name: create directory to store authorized_keys
+#   file:
+#     path: /etc/ssh/users.d
+#     state: directory
+#     mode: 0755
+#   become: yes
+
+# - name: move location of the authorized_keys file
+#   lineinfile:
+#     line: "AuthorizedKeysFile /etc/ssh/users.d/%u"
+#   become: yes
+
+- name: install client CA cert
+  copy:
+    src: trusted-user-ca-keys.pem
+    dest: /etc/ssh/trusted-user-ca-keys.pem
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+- name: configure sshd to use CA cert
+  lineinfile:
+    line: "TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem"
+  become: yes
+
+- name: turn off password authentication
+  lineinfile:
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+  become: yes

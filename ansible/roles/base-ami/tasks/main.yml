@@ -21,3 +21,4 @@
 - include: docker.yml
 - include: consul.yml
 - include: go-audit.yml
+- include: ssh.yml
