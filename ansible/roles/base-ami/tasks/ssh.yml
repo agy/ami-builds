@@ -9,6 +9,7 @@
 
 # - name: move location of the authorized_keys file
 #   lineinfile:
+#     path: /etc/ssh/sshd_config
 #     line: "AuthorizedKeysFile /etc/ssh/users.d/%u"
 #   become: yes
 
@@ -23,11 +24,13 @@
 
 - name: configure sshd to use CA cert
   lineinfile:
+    path: /etc/ssh/sshd_config
     line: "TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem"
   become: yes
 
 - name: turn off password authentication
   lineinfile:
+    path: /etc/ssh/sshd_config
     regexp: "^PasswordAuthentication"
     line: "PasswordAuthentication no"
   become: yes
