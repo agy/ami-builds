@@ -1,5 +1,16 @@
 ---
 
+- name: install auditd (required for auditctl)
+  apt:
+    name: auditd
+  become: true
+
+- name: disable auditd
+  systemd:
+    name: auditd
+    enabled: no
+  become: true
+
 - name: copy go-audit deb from s3
   command: "aws s3 cp s3://agy-deb/{{ go_audit_package }} /tmp/{{ go_audit_package }}"
 
