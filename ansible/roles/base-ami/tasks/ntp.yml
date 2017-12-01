@@ -1,0 +1,17 @@
+---
+
+- name: create override directory for systemd-timesyncd
+  file:
+    path: /etc/systemd/timesyncd.conf.d
+    state: directory
+    mode: 0755
+  become: yes
+
+- name: set ntp servers for systemd-timesyncd
+  copy:
+    src: ntp.conf
+    dest: /etc/systemd/timesyncd.conf.d/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true

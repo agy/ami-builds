@@ -22,3 +22,4 @@
 - include: consul.yml
 - include: go-audit.yml
 - include: ssh.yml
+- include: ntp.yml
