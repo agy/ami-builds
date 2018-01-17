@@ -13,6 +13,9 @@
     - lxcfs
     - snapd
   become: true
+  
+- name: debugging
+  command: ansible hostname -m setup
 
 - include: apt.yml
 - include: awscli.yml
